@@ -1,0 +1,24 @@
+{
+  "services": [
+    {
+      "name": "github",
+      "actions": [
+        {
+          "name": "push",
+          "description": "A new push is made to the repository"
+        }
+      ],
+      "reactions": []
+    },
+    {
+      "name": "discord",
+      "actions": [],
+      "reactions": [
+        {
+          "name": "new_message",
+          "description": "A new message is posted in the webhook"
+        }
+      ]
+    }
+  ]
+}

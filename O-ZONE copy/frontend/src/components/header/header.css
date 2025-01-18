@@ -1,0 +1,134 @@
+.header-band {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #111116;
+  height: 7vh;
+  font-size: 1.3rem;
+  color: #fff;
+  border-bottom: 2px solid #333333;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.logo {
+  height: 5vh;
+  width: 20vh;
+}
+
+.search {
+  justify-self: center;
+  display: none;
+}
+
+.chat {
+  width: 7vh;
+  height: 7vh;
+}
+
+.notification {
+  height: 100%;
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.settings {
+  justify-self: last baseline;
+  height: 7vh;
+  display: flex;
+  gap: 4vh;
+  align-items: center;
+  font-size: 80%;
+}
+
+.settings svg {
+  cursor: pointer;
+}
+
+.header-profile-picture {
+  height: 80%;
+  border-radius: 50%;
+}
+
+.search {
+  outline: none;
+  border: 3px solid #E96C9F;
+  background-color: #261A25;
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  width: 40%;
+  text-align: center;
+  font-family: 'MuseoModerno', sans-serif;
+}
+
+.search:focus {
+  border-color: #E96C9F;
+  box-shadow: 0 0 5px #E96C9F;
+  text-align: left;
+  text-indent: 10px;
+}
+
+.search::placeholder {
+  color: #A58FA0;
+  opacity: 0.8;
+}
+
+.search:focus::placeholder {
+  color: #261A25;
+}
+
+.glass {
+  display: none;
+  position: absolute;
+  height: 1.5rem;
+  width: 1.5rem;
+  left: 57vw;
+}
+
+@media (max-width: 768px) {
+  .header-band {
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    justify-self: flex-start;
+    height: 5vh;
+    width: auto;
+  }
+
+  .settings {
+    display: none;
+  }
+
+  .header-profile-picture {
+    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+  }
+
+  .chat {
+    width: 5vh;
+    height: 5vh;
+  }
+
+  .header-band {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
