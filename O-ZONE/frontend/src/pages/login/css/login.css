@@ -1,0 +1,283 @@
+.page-container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../../../assets/bg-login.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+    opacity: 0;
+}
+
+.login-container {
+    width: 30rem;
+    padding: 80px 40px;
+    background: rgb(74 115 151 / 15%);
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow-x: hidden;
+}
+
+.login-logo_container {
+    display: flex;
+    align-items: center;
+}
+
+.login-logo_container p {
+    color: white;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+.login-title_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form_container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5rem;
+}
+
+.login-form-continue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+.login-social_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-footer_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    color: white;
+}
+
+.login-logo {
+    width: 3.5rem;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.login-title {
+    font-weight: 400;
+    color: white;
+}
+
+.login-form-title {
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0px;
+}
+
+.login-input {
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+}
+
+.login-input::placeholder {
+    color: #b4b4b4;
+}
+
+.login-button {
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-top: 1.2rem;
+    color: #ffffff;
+    background-color: #003465;
+    font-weight: 400;
+    font-size: larger;
+    cursor: pointer;
+    border-color: transparent;
+    transition: transform 0.1s ease;
+}
+
+.login-button:active {
+    transform: scale(0.95);
+}
+
+.login-social-item {
+    border-radius: 10px;
+    padding: 0.5rem 2.5rem;
+    margin-left: 0.4rem;
+    background-color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.login-social-item:active {
+    transform: scale(0.95);
+}
+
+.login-social-item i {
+    font-size: 1.5rem;
+}
+
+.login-footer-text {
+    margin-right: 0.5rem;
+}
+
+.login-footer-link {
+    cursor: pointer;
+    text-decoration: underline white;
+    font-weight: 700;
+    color: white;
+}
+
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+@keyframes slideInRightLog {
+    0% {
+        transform: translateX(150%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right-log {
+    animation: slideInRightLog 1s forwards;
+}
+
+@keyframes slideOutLeftLog {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+}
+
+.slide-out-left-log {
+    animation: slideOutLeftLog 1s forwards;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        width: 22rem;
+        padding: 70px 35px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .login-form_container {
+        margin: 0 1.5rem;
+    }
+
+    .login-logo {
+        width: 3.5rem;
+    }
+
+    .login-title {
+        font-size: 1.7rem;
+    }
+
+    .login-input {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .login-button {
+        padding: 0.5rem;
+        font-size: large;
+    }
+
+    .login-social-item {
+        padding: 0.5rem 2.5rem;
+    }
+
+    .login-footer-text,
+    .login-footer-link {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 18rem;
+        padding: 50px 25px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .login-form_container {
+        margin: 0 1rem;
+    }
+
+    .login-logo {
+        width: 3rem;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+
+    .login-input {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .login-button {
+        padding: 0.4rem;
+        font-size: medium;
+    }
+
+    .login-social-item {
+        padding: 0.4rem 2rem;
+    }
+
+    .login-footer-text,
+    .login-footer-link {
+        font-size: 0.9rem;
+    }
+}

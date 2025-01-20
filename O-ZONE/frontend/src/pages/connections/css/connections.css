@@ -1,0 +1,175 @@
+.connections-container {
+  padding: 2vw;
+  max-height: calc(100vh - 7vh);
+  overflow-y: auto;
+
+}
+
+.connections-container::-webkit-scrollbar {
+  display: none;
+}
+
+.connections-card-grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+}
+
+.connections-card {
+  background-color: #2d1b2d;
+  border: 2px solid #f7c4f5;
+  border-radius: 1vw;
+  text-align: center;
+  padding: 2vw;
+  color: #fff;
+  transition: transform 0.3s ease;
+  height: 3rem;
+  width: 3rem;
+}
+
+.connections-card:hover {
+  transform: scale(1.05);
+}
+
+.logo-placeholder {
+  width: 5vw;
+  height: 5vw;
+  margin: 0 auto 1vw;
+  background-color: #3c2b3c;
+  color: #f7c4f5;
+  font-size: 2vw;
+  font-weight: bold;
+  border: 2px solid #f7c4f5;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connections-card h3 {
+  margin: 1vw 0;
+  color: #f7c4f5;
+}
+
+.connections-card p {
+  margin: 0.5vw 0;
+}
+
+.connect-btn,
+.disconnect-btn {
+  color:#f7c4f5;
+  border: solid 3px #f7c4f5;
+  background-color: #2d1b2d;
+  padding: 0.5vw 1vw;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  font-size: 1vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  transition: background-color 0.3s ease;
+}
+
+.connect-btn:hover {
+  background-color: #e4aadf;
+}
+
+.disconnect-btn:hover {
+  background-color: #e4aadf;
+}
+
+.add-card {
+  background-color: #2d1b2d;
+  border: 2px dashed #f7c4f5;
+}
+
+.add-card h3 {
+  color: #f7c4f5;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .connections-card {
+    flex: 1 1 calc(5% - 2vw); /* Four cards per row */
+  }
+
+  .logo-placeholder {
+    width: 4vw;
+    height: 4vw;
+    font-size: 1.5vw;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1024px) {
+  .connections-card {
+    flex: 1 1 calc(33.33% - 2vw); /* Three cards per row */
+  }
+
+  .logo-placeholder {
+    width: 6vw;
+    height: 6vw;
+    font-size: 1.8vw;
+  }
+
+  .connect-btn,
+  .disconnect-btn {
+    font-size: 1vw;
+  }
+}
+
+/* Small screens */
+@media (max-width: 768px) {
+  .connections-card {
+    flex: 1 1 calc(50% - 2vw); /* Two cards per row */
+    height: 14rem !important;
+    width: 3rem !important;
+  }
+
+  .logo-placeholder {
+    width: 8vw;
+    height: 8vw;
+    font-size: 2.5vw;
+  }
+
+  .connect-btn,
+  .disconnect-btn {
+    font-size: 1rem;
+    padding: 0.3rem;
+    margin-top: 1rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .connections-card {
+    flex: 1 1 100%; /* One card per row */
+    height: 11rem !important;
+    width: 3rem !important;
+  }
+
+  .logo-placeholder {
+    width: 10vw;
+    height: 10vw;
+    font-size: 3vw;
+  }
+
+  .connect-btn,
+  .disconnect-btn {
+    font-size: 1rem;
+    padding: 0.3rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* .main-body {
+    grid-template-columns: unset;
+} */
+
+  .sidebar.active + .historic_container {
+      display: none;
+  }
+}

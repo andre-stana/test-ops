@@ -1,0 +1,50 @@
+services:
+  ui:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - 8081:3000
+    networks:
+      - app-network
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+  api:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+      - 5555:5555
+    depends_on:
+      - db
+    networks:
+      - api-network
+      - app-network
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - api-network
+
+networks:
+  app-network:
+    driver: bridge
+  api-network:
+    driver: bridge
+
+volumes:
+  db-data:
