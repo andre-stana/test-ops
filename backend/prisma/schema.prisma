@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int            @id @default(autoincrement())
+  email    String         @unique
+  password String?        @unique
+  name     String?
+  services UserService[]
+  area     Area[]
+  notif    Notification[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model UserService {
+  id           Int    @id @default(autoincrement())
+  userId       Int
+  serviceId    String
+  serviceName  String
+  accessToken  String
+  refreshToken String
+  user         User   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, serviceId, serviceName])
+}
+
+model Action {
+  id          Int    @id @default(autoincrement())
+  name        String @unique
+  description String
+  service     String
+  Area        Area[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reaction {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String
+  service     String
+  webhookURL  String?
+  Area        Area[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Area {
+  id          Int      @id @default(autoincrement())
+  userId      Int?
+  name        String
+  description String
+  actionId    Int
+  reactionId  Int
+  action      Action   @relation(fields: [actionId], references: [id])
+  reaction    Reaction @relation(fields: [reactionId], references: [id])
+  User        User?    @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id          Int    @id @default(autoincrement())
+  userId      Int
+  title       String
+  description String
+  type        String
+
+  user User @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
