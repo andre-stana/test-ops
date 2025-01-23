@@ -42,7 +42,7 @@ It is built using NodeJS and Express and uses many technologies like: prisma wit
 
 ## Prerequisites
 
-- **[Language/Runtime]**: `Node.js >= 16.x` `TypeScript`
+- **[Language/Runtime]**: `Node.js >= 22.x` `TypeScript`
 - **[Package Manager]**: `npm >= 8.x`
 - **Database**: PostgreSQL
 - **Other Tools**: [Docker](https://hub.docker.com/layers/library/node/22-alpine/images/sha256-3a4802e64ab5181c7870d6ddd8c824c2efc42873baae37d1971451668659483b) (for containerized environments during developpment and deploy)
@@ -130,14 +130,13 @@ DISCORD_CLIENT_SECRET="<key>"
 
 ## Database
 
-<ADD an image\>
+![Database Schema](./DB_schema.png)
 
 ---
 
 ## Testing
 
-You can find testing through our github action policy and using cypress
-<Need to add details\>
+You can find testing through our github action policy and using cypress.
 
 ---
 

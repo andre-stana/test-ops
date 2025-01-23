@@ -3,6 +3,8 @@ import { link } from 'fs';
 import passport from 'passport';
 import { githubCallback, redirectToGitHub } from '../../controllers/services/github.controller';
 import { discordServiceCallback, redirectToDiscordService } from '../../controllers/services/discord.controller';
+import { trelloCallback, redirectToTrello } from '../../controllers/services/trello.controller';
+import { redditCallback, redirectToReddit } from '../../controllers/services/reddit.controller';
 
 const linkRouter = Router();
 
@@ -139,6 +141,33 @@ linkRouter.get('/spotify/callback',
   }
 );
 
+/**
+ * @swagger
+ * /link/reddit:
+ *   get:
+ *     summary: Link reddit third-party account
+ *     tags: [Link Accounts]
+ *     responses:
+ *       200:
+ *         description: Successfully authenticated
+ *       401:
+ *         description: Auth failed
+ */
+linkRouter.get('/reddit', redirectToReddit);
+
+/**
+ * @swagger
+ * /link/reddit/callback:
+ *   get:
+ *     summary: Callback for reddit third-party account
+ *     tags: [Link Accounts]
+ *     responses:
+ *       200:
+ *         description: Successfully authenticated
+ *       401:
+ *         description: Auth failed
+ */
+linkRouter.get('/reddit/callback', redditCallback);
 
 /**
  * @swagger
@@ -168,16 +197,18 @@ linkRouter.get('/twitter', passport.authenticate('twitter-link'));
  */
 linkRouter.get('/twitter/callback',
   passport.authenticate('twitter-link', { failureRedirect: '/login' }),
-  (_, res) => {
-    res.redirect('/');
+  (req, res) => {
+    (req.platform === 'mobile') ?
+      res.redirect(`${process.env.MOBILE_APP_URL}connections`) :
+      res.redirect(`${process.env.FRONTEND_URL}:${process.env.FRONTEND_PORT}/connections`);
   }
 );
 
 /**
  * @swagger
- * /link/facebook:
+ * /link/trello:
  *  get:
- *    summary: Link Facebook third-party account
+ *    summary: Link trello third-party account
  *    tags: [Link Accounts]
  *    responses:
  *      200:
@@ -185,13 +216,13 @@ linkRouter.get('/twitter/callback',
  *      401:
  *        description: Auth failed
  */
-linkRouter.get('/facebook', passport.authenticate('facebook-link'));
+linkRouter.get('/trello', redirectToTrello);
 
 /**
  * @swagger
- * /link/facebook/callback:
+ * /link/trello/callback:
  *  get:
- *    summary: Callback for Facebook third-party account
+ *    summary: Callback for trello third-party account
  *    tags: [Link Accounts]
  *    responses:
  *      200:
@@ -199,11 +230,7 @@ linkRouter.get('/facebook', passport.authenticate('facebook-link'));
  *      401:
  *        description: Auth failed
  */
-linkRouter.get('/facebook/callback',
-  passport.authenticate('facebook-link', { failureRedirect: '/login' }),
-  (_, res) => {
-    res.redirect('/');
-  });
+linkRouter.get('/trello/callback', trelloCallback);
 
 
 export default linkRouter;

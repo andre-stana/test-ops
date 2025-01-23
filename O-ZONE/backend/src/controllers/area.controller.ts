@@ -2,6 +2,9 @@ import { prisma } from "../config/prisma";
 
 // Ajouter une nouvelle zone
 export const addArea = async (name: string, description: string, userId: number, actionId: number, reactionId: number) => {
+
+  console.log(`Creating new area: ${userId}`);
+
   const area = await prisma.area.create({
     data: {
       name,
@@ -11,6 +14,8 @@ export const addArea = async (name: string, description: string, userId: number,
       userId,
     },
   });
+
+  console.log(`New area created: ${area.name}`);
 
   return area;
 };

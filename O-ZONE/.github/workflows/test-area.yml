@@ -1,0 +1,34 @@
+name: Verify Directories
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-directories:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Verify frontend directory exists
+        run: |
+          if [ ! -d "frontend" ]; then
+            echo "Error: frontend directory does not exist."
+            exit 1
+          fi
+
+      - name: Verify backend directory exists
+        run: |
+          if [ ! -d "backend" ]; then
+            echo "Error: backend directory does not exist."
+            exit 1
+          fi
+
+      - name: Directories check passed
+        run: echo "Both frontend and backend directories exist."

@@ -10,10 +10,7 @@ function Registration() {
   const handleLogin = () => {
     document.querySelector('.registration-container').classList.add('slide-out-left-reg');
     document.querySelector('.page-container-register').classList.add('fade-out');
-
-    setTimeout(() => {
-      navigate("/");
-    }, 500);
+    navigate("/");
   };
 
   useEffect(() => {
@@ -33,7 +30,7 @@ function Registration() {
         button.removeEventListener('click', handleLogin);
       }
     };
-  }, []);
+  });
 
   return (
     <div className="page-container-register">

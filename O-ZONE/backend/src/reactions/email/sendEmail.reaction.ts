@@ -10,7 +10,7 @@ import { resend } from "../../config/resend";
 export async function sendEmailNotification(to: string, subject: string, html: string): Promise<void> {
   try {
     const { data, error } = await resend.emails.send({
-      from: "O-Zone Notifications <no-reply@ozone.app>",
+      from: "O-Zone Notifications <no-reply@o-zone.lol>",
       to: [to],
       subject: `[O-Zone] ${subject}`, // Prefix subject with app name
       html: `
@@ -19,8 +19,8 @@ export async function sendEmailNotification(to: string, subject: string, html: s
           <p>${html}</p>
           <hr />
           <footer style="font-size: 12px; color: #888;">
-            <p>You’re receiving this email because of an activity in O-Zone.</p>
-            <p>If you have questions, contact us at <a href="mailto:support@ozone.app" style="color: #2F80ED;">support@ozone.app</a>.</p>
+            <p>You're receiving this email because of an activity in O-Zone.</p>
+            <p>If you have questions, contact us at <a href="mailto:support@o-zone.lol" style="color: #2F80ED;">support@o-zone.lol</a>.</p>
           </footer>
         </div>
       `,
@@ -28,10 +28,10 @@ export async function sendEmailNotification(to: string, subject: string, html: s
 
     if (error) {
       console.error("Failed to send email:", error);
-      throw new Error(`Email sending failed: ${error.message}`);
+      throw new Error(`Email (${to}) sending failed: ${error.message}`);
     }
 
-    console.log("Email sent successfully:", data);
+    console.log(`Email (${to}) sent successfully:`, data);
   } catch (err) {
     console.error("An error occurred while sending the email:", err);
     throw err;

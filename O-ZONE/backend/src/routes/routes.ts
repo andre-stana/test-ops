@@ -14,6 +14,9 @@ import unlinkRouter from './services/unlink.routes';
 import serviceRouter from './services/services.routes';
 import utilsRouter from './utils.routes';
 import { githubRouter } from './github.routes';
+import { redditRouter } from './reddit.routes';
+import { trelloRouter } from './trello.routes';
+import { SpotifyRouter } from './spotify.routes';
 
 const mainRouter = Router();
 
@@ -32,5 +35,8 @@ mainRouter.use('/notifications', notificationsRouter);
 mainRouter.use('/utils', utilsRouter);
 
 mainRouter.use('/github', authenticateJWT, githubRouter);
+mainRouter.use('/reddit', authenticateJWT, redditRouter);
+mainRouter.use('/trello', authenticateJWT, trelloRouter);
+mainRouter.use('/spotify', authenticateJWT, SpotifyRouter);
 
 export default mainRouter;

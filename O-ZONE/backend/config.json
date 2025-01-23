@@ -6,6 +6,30 @@
         {
           "name": "push",
           "description": "A new push is made to the repository"
+        },
+        {
+          "name": "pull_request",
+          "description": "A new pull request is made to the repository"
+        },
+        {
+          "name": "issues",
+          "description": "A new issue is made to the repository"
+        },
+        {
+          "name": "issue_comment",
+          "description": "A new comment is made to an issue"
+        },
+        {
+          "name": "commit_comment",
+          "description": "A new comment is made to a commit"
+        },
+        {
+          "name": "release",
+          "description": "A new release is made to the repository"
+        },
+        {
+          "name": "workflow_run",
+          "description": "A new workflow run is made to the repository"
         }
       ],
       "reactions": []
@@ -31,6 +55,35 @@
         {
           "name": "send_email",
           "description": "Send an email to the recipient"
+        }
+      ]
+    },
+    {
+      "name": "spotify",
+      "actions": [
+        {
+          "name": "playlist_change",
+          "description": "A song is added or removed to/from the playlist"
+        }
+      ],
+      "reactions": [
+        {
+          "name": "create_playlist",
+          "description": "Create a new playlist"
+        }
+      ]
+    },
+    {
+      "name": "reddit",
+      "actions": [],
+      "reactions": [
+        {
+          "name": "send_random_mesage",
+          "description": "Share a random post from a random subreddit to a definited user"
+        },
+        {
+          "name": "send_random_mesage_random_user",
+          "description": "Share a random post from a random subreddit to a random user"
         }
       ]
     }

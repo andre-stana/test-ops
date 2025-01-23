@@ -2,7 +2,7 @@ import { useState } from "react";
 import { API_PORT, API_URL } from "../../config/config";
 
 export function useRegister() {
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
 
   const register = async (username, email, password) => {
     try {

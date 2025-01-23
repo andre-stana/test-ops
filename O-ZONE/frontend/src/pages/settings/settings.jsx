@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
-// import CustomNotification from '../../components/notifications/notification';
 import { getUser } from "../../hooks/user/getUser";
 import { useAuth } from "../../hooks/auth/useAuth";
 import "./css/settings.css";
@@ -15,7 +14,7 @@ function Settings() {
         fail: true,
         update: true,
     });
-    const [_, logout, __] = useAuth();
+    const [, logout,] = useAuth();
 
     const handleCheckboxChange = (key) => {
         setNotificationPreferences({

@@ -7,7 +7,6 @@ import googleServiceStrategy from '../strategies/services/google.service.strateg
 import discordServiceStrategy from '../strategies/services/discord.service.strategy';
 import spotifyServiceStrategy from '../strategies/services/spotify.service.strategy';
 import twitterServiceStrategy from '../strategies/services/twitter.service.strategy';
-import facebookServiceStrategy from '../strategies/services/facebook.service.strategy';
 
 passport.use('google', googleStrategy);
 passport.use('discord', discordStrategy);
@@ -17,7 +16,6 @@ passport.use('google-link', googleServiceStrategy);
 passport.use('discord-link', discordServiceStrategy);
 passport.use('spotify-link', spotifyServiceStrategy);
 passport.use('twitter-link', twitterServiceStrategy);
-passport.use('facebook-link', facebookServiceStrategy);
 
 passport.serializeUser((user: any, done) => {
   done(null, user.id);

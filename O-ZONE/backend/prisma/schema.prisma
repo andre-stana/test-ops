@@ -59,15 +59,19 @@ model Reaction {
 }
 
 model Area {
-  id          Int      @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   userId      Int?
   name        String
   description String
   actionId    Int
   reactionId  Int
-  action      Action   @relation(fields: [actionId], references: [id])
-  reaction    Reaction @relation(fields: [reactionId], references: [id])
-  User        User?    @relation(fields: [userId], references: [id])
+
+  actionParams   Json @default("{}")
+  reactionParams Json @default("{}")
+
+  action   Action   @relation(fields: [actionId], references: [id])
+  reaction Reaction @relation(fields: [reactionId], references: [id])
+  User     User?    @relation(fields: [userId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

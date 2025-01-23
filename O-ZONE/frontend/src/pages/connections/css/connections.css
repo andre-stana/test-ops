@@ -2,6 +2,7 @@
   padding: 2vw;
   max-height: calc(100vh - 7vh);
   overflow-y: auto;
+  padding-bottom: 7rem;
 
 }
 
@@ -92,7 +93,7 @@
 /* Large screens */
 @media (min-width: 1024px) {
   .connections-card {
-    flex: 1 1 calc(5% - 2vw); /* Four cards per row */
+    flex: 1 1 calc(5% - 2vw);
   }
 
   .logo-placeholder {
@@ -105,7 +106,7 @@
 /* Medium screens */
 @media (max-width: 1024px) {
   .connections-card {
-    flex: 1 1 calc(33.33% - 2vw); /* Three cards per row */
+    flex: 1 1 calc(33.33% - 2vw);
   }
 
   .logo-placeholder {
@@ -123,7 +124,7 @@
 /* Small screens */
 @media (max-width: 768px) {
   .connections-card {
-    flex: 1 1 calc(50% - 2vw); /* Two cards per row */
+    flex: 1 1 calc(50% - 2vw);
     height: 14rem !important;
     width: 3rem !important;
   }
@@ -145,7 +146,7 @@
 /* Extra small screens */
 @media (max-width: 480px) {
   .connections-card {
-    flex: 1 1 100%; /* One card per row */
+    flex: 1 1 100%;
     height: 11rem !important;
     width: 3rem !important;
   }
@@ -165,10 +166,6 @@
 }
 
 @media (max-width: 1024px) {
-  /* .main-body {
-    grid-template-columns: unset;
-} */
-
   .sidebar.active + .historic_container {
       display: none;
   }

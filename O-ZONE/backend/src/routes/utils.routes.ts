@@ -7,7 +7,7 @@ utilsRouter.get('/user', (req, res) => {
 });
 
 utilsRouter.get('/confidentiality', (req, res) => {
-    res.json({ status: 'ok' });
+  res.json({ status: 'ok' });
 });
 
 export default utilsRouter;

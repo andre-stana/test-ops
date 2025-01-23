@@ -38,13 +38,19 @@ body {
 }
 
 .overview-content {
+    overflow-y: auto;
+    max-height: calc(100vh - 7vh);
     margin: 3rem;
+}
+
+.overview-content::-webkit-scrollbar {
+    display: none;
 }
 
 .overview-stats {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 5rem;
+    margin-bottom: 1rem;
     color: white;
 }
 
@@ -62,19 +68,13 @@ body {
     height: 50px;
 }
 
-.stats-scenario {}
-
-.scenario-txt {
+.creation-txt {
     margin-right: 0.5rem;
 }
-
-.stats-success {}
 
 .success-txt {
     margin-right: 0.5rem;
 }
-
-.stats-failure {}
 
 .failure-txt {
     margin-right: 0.5rem;
@@ -115,8 +115,6 @@ body {
     margin-top: 0;
 }
 
-.controlcenter-notifications {}
-
 .controlcenter-nb {
     font-size: 1.6rem;
 }
@@ -146,14 +144,38 @@ body {
     margin-bottom: 1rem;
 }
 
+.recent-tasks {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #332435;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
 .tasks-center {
     border-radius: 20px;
-    padding-bottom: 9rem;
+    padding-bottom: 1rem;
     background-color: #332435;
     padding-top: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
     margin: 1rem;
+}
+
+.running-tasks ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.running-tasks li {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #fff;
 }
 
 .running-tasks {

@@ -10,6 +10,8 @@ import { getAboutInfo } from './controllers/about.controller';
 import { detectPlatform } from './middleware/plateform.middleware';
 import { syncDatabase } from './utils/syncDatabase';
 
+import { LaunchSpotifyLoop } from "./actions/spotify.action";
+
 config();
 
 declare global {
@@ -67,3 +69,5 @@ prisma.$connect()
   .catch((error: any) => {
     console.error("Error connecting to the database", error);
   });
+
+LaunchSpotifyLoop();

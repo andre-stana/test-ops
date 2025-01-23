@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Request, Response, Router } from 'express';
 import { addArea, getAllAreas, getAreaById, updateArea } from '../controllers/area.controller';
 
 const areasRouter = Router();
@@ -30,9 +30,21 @@ const areasRouter = Router();
  *             schema:
  *               $ref: '#/components/schemas/Area'
  */
-areasRouter.post('/', async (req, res) => {
+areasRouter.post('/', async (req: Request, res: Response) => {
   const { name, description, actionId, reactionId, userId } = req.body;
-  const area = await addArea(name, description, actionId, reactionId, userId);
+
+  if (!name || !description || !actionId || !reactionId || !userId) {
+    res.status(400).json({ message: 'Invalid input' });
+    return;
+  }
+
+  const area = await addArea(name, description, userId, actionId, reactionId);
+
+  if (!area) {
+    res.status(500).json({ message: 'Failed to create area' });
+    return;
+  }
+
   res.json(area);
 });
 
@@ -52,7 +64,7 @@ areasRouter.post('/', async (req, res) => {
  *               items:
  *                 $ref: '#/components/schemas/Area'
  */
-areasRouter.get('/', async (req, res) => {
+areasRouter.get('/', async (req: Request, res: Response) => {
   const areas = await getAllAreas();
   res.json(areas);
 });
@@ -78,9 +90,21 @@ areasRouter.get('/', async (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/Area'
  */
-areasRouter.get('/:id', async (req, res) => {
+areasRouter.get('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
+
+  if (!id) {
+    res.status(400).json({ message: 'Invalid input' });
+    return;
+  }
+
   const area = await getAreaById(Number(id));
+
+  if (!area) {
+    res.status(404).json({ message: 'Area not found' });
+    return;
+  }
+
   res.json(area);
 });
 
@@ -111,9 +135,21 @@ areasRouter.get('/:id', async (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/Area'
  */
-areasRouter.put('/:id', async (req, res) => {
+areasRouter.put('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
+
+  if (!id) {
+    res.status(400).json({ message: 'Invalid input' });
+    return;
+  }
+
   const { name, description, actionId, reactionId, userId } = req.body;
+
+  if (!name || !description || !actionId || !reactionId || !userId) {
+    res.status(400).json({ message: 'Invalid input' });
+    return;
+  }
+
   const area = await updateArea(Number(id), name, description, actionId, reactionId, userId);
   res.json(area);
 });

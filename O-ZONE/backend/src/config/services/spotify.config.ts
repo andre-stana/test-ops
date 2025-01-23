@@ -9,13 +9,6 @@ if (!API_URL || !API_PORT) {
   throw new Error('API_URL and API_PORT must be provided');
 }
 
-export const SPOTIFY_CONFIG = {
-  clientId: process.env.SPOTIFY_CLIENT_ID!,
-  clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
-  callbackURL: `${API_URL!}:${API_PORT!}/api/auth/spotify/callback`,
-  scope: ['user-read-email', 'user-read-private'],
-};
-
 export const SPOTIFY_SERVICE_CONFIG = {
   clientId: process.env.SPOTIFY_CLIENT_ID!,
   clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,

@@ -6,7 +6,7 @@ import { API_URL, API_PORT } from "../../config/config";
 export function useAuth() {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [, setCookie, removeCookie] = useCookies();
 
   const login = async (email, password) => {
     try {
@@ -32,7 +32,6 @@ export function useAuth() {
         throw new Error('Failed to login');
       }
 
-      const user = data.user;
       const token = data.token;
 
       setCookie('token', token);

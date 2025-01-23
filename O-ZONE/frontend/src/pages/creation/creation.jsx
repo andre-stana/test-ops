@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import "./css/creation.css";
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
-// import CustomNotification from '../../components/notifications/notification';
 import { getReactions } from '../../hooks/reaction/getReact';
 import { getActions } from '../../hooks/action/getAction';
 import { sendArea } from '../../hooks/area/sendArea';
+import { getUser } from "../../hooks/user/getUser";
+import "./css/creation.css";
 
 function Creation() {
     const [reactions, setReactions] = useState([]);
@@ -19,22 +18,27 @@ function Creation() {
     const [publishedData, setPublishedData] = useState(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        async function fetchReactions() {
+        const fetchData = async () => {
+            const user = await getUser();
+
+            if (!user) {
+                console.error('No user data found. Please log in.');
+                return;
+            }
+
+            setUser(user);
+
             const reactionsData = await getReactions();
             setReactions(reactionsData || []);
-        }
-        fetchReactions();
-    }, []);
 
-    useEffect(() => {
-        async function fetchActions() {
             const actionsData = await getActions();
             setActions(actionsData || []);
-        }
-        fetchActions();
+        };
+
+        fetchData();
     }, []);
 
     const toggleReactionsMenu = () => {
@@ -85,12 +89,14 @@ function Creation() {
         const reaction = selectedItems.find(item => item.type === 'reaction');
 
         const data = {
+            userId: user.id,
             name: title,
             description: description,
-            actionId: action ? action.id : null,
-            reactionId: reaction ? reaction.id : null,
-            userId: 1
+            actionId: action.id,
+            reactionId: reaction.id,
         };
+
+        console.log('Publishing area:', data);
 
         setPublishedData(data);
 
@@ -210,7 +216,6 @@ function Creation() {
                         </div>
                     </div>
                 </div>
-                {/* <CustomNotification className="notification" /> */}
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { ReactComponent as Logo } from '../../assets/ozone.svg';
 import { ReactComponent as Chat } from '../../assets/bubble_chat.svg';
 import { ReactComponent as Search } from '../../assets/search.svg';
@@ -8,6 +8,8 @@ import "./header.css";
 function Header() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const chatButtonRef = useRef(null);
+    const logoButtonRef = useRef(null);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -42,13 +44,12 @@ function Header() {
                 console.error('chatButton not found');
             }
 
-            // Cleanup event listener on component unmount
             return () => {
                 if (chatButton) {
                     chatButton.removeEventListener('click', handleChatButtonClick);
                 }
             };
-        }, [user]); // Ensure this effect runs only after `user` is set and the DOM updates
+        }, [user]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -60,13 +61,13 @@ function Header() {
 
     return (
         <div className="header-band">
-            <Logo className="logo" alt="logo" />
+            <Logo ref={logoButtonRef} className="logo" alt="logo" />
             <input className="search" type="text" placeholder="Search.." />
             <Search className="glass" />
             <div className="settings">
                 <img src={`https://api.dicebear.com/9.x/identicon/svg?seed=${user.name}`} className="header-profile-picture" alt="profile-picture" />
                 <p>{user.name}</p>
-                <Chat className="chat" alt="chat" />
+                <Chat ref={chatButtonRef} className="chat" alt="chat" />
             </div>
         </div>
     );

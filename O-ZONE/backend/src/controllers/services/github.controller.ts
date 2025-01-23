@@ -176,7 +176,12 @@ export async function setGithubWebhook(req: Request, res: Response) {
       active: true,
       events: [
         "push",
-        "pull_request"
+        "pull_request",
+        "issues",
+        "issue_comment",
+        "commit_comment",
+        "release",
+        "workflow_run",
       ],
       config: {
         url: webhookUrl,

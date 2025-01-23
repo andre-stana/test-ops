@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./css/login.css";
 
 export function LoginForm() {
-    const [login, logout, authError] = useAuth();
+    const [login, , authError] = useAuth();
 
     const [formData, setFormData] = useState({
         email: "",

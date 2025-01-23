@@ -37,7 +37,7 @@ export function loginUser(req: Request, res: Response) {
   const token = jwt.sign(
     { id: user.id, email: user.email },
     process.env.JWT_SECRET!,
-    { expiresIn: '10h' }
+    { expiresIn: '30d' }
   );
 
   res.cookie('token', token, {

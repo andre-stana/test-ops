@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import { EventEmitter } from 'events';
 import { prisma } from '../config/prisma';
-import { fetchGithubUserEmailByToken } from '../utils/fetcher';
-import { User, UserService } from '@prisma/client';
+import { User } from '@prisma/client';
 import { ReactionPayload } from '../types/reaction';
 
 async function githubTrigger(req: Request, res: Response, eventEmitter: EventEmitter) {
@@ -63,12 +62,11 @@ async function githubTrigger(req: Request, res: Response, eventEmitter: EventEmi
       },
     });
 
-    console.log(areas);
-
     areas.forEach((area) => {
       const payload: ReactionPayload = {
         userId: user.id,
         reactionId: area.reaction.id,
+        event: event || '',
         webhookURL: area.reaction.webhookURL || '',
         emailTo: user.email,
       };

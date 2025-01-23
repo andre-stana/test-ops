@@ -6,7 +6,7 @@ import "./css/registration.css";
 
 export function RegisterForm() {
   const register = useRegister();
-  const [login, _, __] = useAuth();
+  const [login, ,] = useAuth();
 
   const [formData, setFormData] = useState({
     username: "",

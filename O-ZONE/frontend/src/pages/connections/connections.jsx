@@ -2,21 +2,18 @@ import React, { useState, useEffect } from "react";
 import "./css/connections.css";
 import Header from "../../components/header/header";
 import Sidebar from "../../components/sidebar/sidebar";
-// import CustomNotification from "../../components/notifications/notification";
 import { getConnectedServices } from '../../hooks/services/getConnectedServices';
 import { API_PORT, API_URL } from "../../config/config.js";
 
 function Connections({ cardHeight = "250px", cardWidth = "200px" }) {
     const [data, setData] = useState([
-        { id: 1, name: "Facebook", connected: false, username: "" },
-        { id: 2, name: "Discord", connected: false, username: "" },
-        { id: 3, name: "Spotify", connected: false, username: "" },
-        { id: 4, name: "X", connected: false, username: "" },
-        { id: 5, name: "G-Mail", connected: false, username: "" },
-        { id: 6, name: "SoundCloud", connected: false, username: "" },
-        { id: 7, name: "GitHub", connected: false, username: "" },
-        { id: 8, name: "Google", connected: false, username: "" },
-        { id: 9, name: "Deezer", connected: false, username: "" },
+        { id: 1, name: "Discord", connected: false, username: "" },
+        { id: 2, name: "Spotify", connected: false, username: "" },
+        { id: 3, name: "G-Mail", connected: false, username: "" },
+        { id: 4, name: "GitHub", connected: false, username: "" },
+        { id: 5, name: "Google", connected: false, username: "" },
+        { id: 6, name: "Trello", connected: false, username: "" },
+        { id: 7, name: "Reddit", connected: false, username: "" },
     ]);
 
     useEffect(() => {
@@ -114,7 +111,6 @@ function Connections({ cardHeight = "250px", cardWidth = "200px" }) {
                         </div>
                     </div>
                 </div>
-                {/* <CustomNotification className="notification" /> */}
             </div>
         </div>
     );

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./css/historic.css";
 import Header from '../../components/header/header';
 import Sidebar from '../../components/sidebar/sidebar';
-// import CustomNotification from '../../components/notifications/notification';
 import { getAreas } from '../../hooks/area/getAreas';
 import { getActions } from '../../hooks/action/getAction';
 import { getReactions } from '../../hooks/reaction/getReact';
@@ -13,14 +12,21 @@ function Historic() {
     const [reactions, setReactions] = useState([]);
 
     useEffect(() => {
-        async function fetchData() {
-            const areasData = await getAreas();
-            const actionsData = await getActions();
-            const reactionsData = await getReactions();
-            setAreas(areasData || []);
-            setActions(actionsData || []);
-            setReactions(reactionsData || []);
-        }
+        const fetchData = async () => {
+            try {
+                const [areasData, actionsData, reactionsData] = await Promise.all([
+                    getAreas(),
+                    getActions(),
+                    getReactions()
+                ]);
+                setAreas(areasData || []);
+                setActions(actionsData || []);
+                setReactions(reactionsData || []);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
         fetchData();
     }, []);
 
@@ -43,9 +49,9 @@ function Historic() {
 
     return (
         <div>
-            <Header className="header"/>
+            <Header className="header" />
             <div className='main-body'>
-                <Sidebar className="sidebar"/>
+                <Sidebar className="sidebar" />
                 <div className="historic_container">
                     {areas.length > 0 ? (
                         areas.map((area) => (
@@ -62,7 +68,6 @@ function Historic() {
                         <p className="text">No areas found</p>
                     )}
                 </div>
-                {/* <CustomNotification className="notification" /> */}
             </div>
         </div>
     )

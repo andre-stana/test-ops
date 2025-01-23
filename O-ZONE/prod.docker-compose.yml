@@ -1,4 +1,16 @@
 services:
+  ui:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.prod
+    env_file:
+      - .env
+    ports:
+      - 80:80
+    networks:
+      - api-network
+      - app-network
+
   api:
     build:
       context: backend
@@ -21,6 +33,11 @@ services:
       - db-data:/var/lib/postgresql/data
     networks:
       - api-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $POSTGRES_USER" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   app-network:

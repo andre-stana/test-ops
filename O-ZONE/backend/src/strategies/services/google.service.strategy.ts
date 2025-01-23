@@ -73,8 +73,27 @@ const googleServiceStrategy = new GoogleStrategy(
         },
       });
 
+
+    const setEmail = fetch(`https://www.googleapis.com/gmail/v1/users/${googleService.id}/watch`, {
+      method: 'POST',
+      headers: {
+        "labelIds": "INBOX",
+        "topicName": "projects/o-zone-443512/topics/gmail-notification"
+      }
+    });
+
+    console.log('Email set');
+
+    if (!setEmail) {
+      console.error('Failed to set email');
+      return done(null, false);
+    } else {
+      console.log('Email set');
+    }
+
       return done(null, user);
     } catch (error) {
+      console.error(error);
       return done(error, false);
     }
   }

@@ -60,7 +60,11 @@ authRouter.get(
     const user: User = isUser;
 
     // Generate JWT token
-    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET!, { expiresIn: '1h' });
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET!,
+      { expiresIn: '30d' }
+    );
 
     // Set token in cookie
     res.cookie('token', token, {

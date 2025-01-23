@@ -11,7 +11,7 @@ O-ZONE is an innovative application that allows you to create, manage, and execu
 - **Navigation**: Easy access to different sections of the application via a navigation bar.
 
 ### Scenarios
-- **Scenario Creation**: Intuitive interface to create new scenarios by adding cards representing different actions.
+- **Creation**: Intuitive interface to create new scenarios by adding cards representing different actions.
 - **Card Management**: Add, move, and delete cards within a scenario.
 - **Scenario Saving**: Save scenarios with a title and description.
 - **Scenario Execution**: Execute created scenarios to automate tasks.

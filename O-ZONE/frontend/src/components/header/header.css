@@ -1,3 +1,10 @@
+@media (max-width: 100vh) {
+  .settings img,
+  .settings p {
+    display: none;
+  }
+}
+
 .header-band {
   display: grid;
   grid-template-columns: 1fr 1fr;
